@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	
+	<div class="container py-4">
+		<h1>Lugar de Entrada</h1>
+		<hr>
+		<br>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Lugar</th>
+					<th>Precio</th>
+					<th>Stock</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entrada : ${entradas}">
+					<td th:text="${entrada.id}"></td>
+					<td th:text="${entrada.lugar}"></td>
+					<td th:text=" '$' + ${entrada.precio}"></td>
+					<td th:text="${entrada.stock}"></td>
+					<td><a class="btn btn-primary btn-sm"
+								th:href="@{/form/} + ${entrada.id}" th:text="'comprar'"></a> </td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>	
+</body>
+</html>

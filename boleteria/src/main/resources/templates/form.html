@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	
+	<div class="container py-4" >
+		<h1>Formulario de Compra</h1>
+		<hr>
+		<br>
+		<form th:action="@{/compra}"  th:object="${compra}" method="POST">
+			<input class="form-control" type="hidden" name="entrada.id"  th:value="${compra.entrada.id}"  th:field="*{entrada.id}" id="entrada.id" />
+		  <div class="form-row">
+		    <div class="col-md-4">
+		      <label>Lugar: </label>	
+		      <input class="form-control" type="text" th:value="${compra.entrada.lugar}"  disabled/>
+		    </div>
+		    <div class="col-md-4">
+		      <label>Precio: </label>	
+		      <input class="form-control"   id="precio" type="text" th:value="${compra.entrada.precio}"  disabled/>
+		    </div>
+		    <div class="col-md-4">
+		      <label>Stock: </label>	
+		      <input class="form-control" type="text" th:value="${compra.entrada.stock}"  disabled/>
+		    </div>
+		  </div>
+		  <br>
+		  <div class="form-row">
+		    <div class="col-md-4">
+		      <label>Dni: </label>	
+		      <input class="form-control" type="text"  th:field="*{dni}" placeholder="dni"/>
+		    </div>
+		    <div class="col-md-4">
+		      <label>Cantidad: </label>	
+		      <input class="form-control" id="cantidad" type="number" th:field="*{cantidad}"  name="cantidad" min="1" max="4" onChange="subtotal()"/>
+		    </div>
+		    <div class="col-md-4">
+		      <label>SubTotal: </label>	
+		      <input class="form-control" type="text"  id="total" th:field="*{total}" />
+		    </div>
+		  </div>
+		  <br>
+		  <div class="form-row">
+		  	<div class="col-md-12">
+		  		<input class="btn btn-success btn-block" type="submit"  value="Registrar Compra"/>
+		  	</div>
+		  </div>
+		</form>
+	</div>
+	
+	
+	
+	<footer th:replace="layout/layout :: footer"></footer>	
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	
+	<div class="container py-4">
+		<h1>Lista de Ventas</h1>
+		<hr>
+		<br>
+		<a th:href="@{/listar}" class="btn btn-success" role="button">Crear Compra</a>
+		<br>
+		<br>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Id_Entrada</th>
+					<th>Dni</th>
+					<th>Cantidad</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="compra : ${compras}">
+					<td th:text="${compra.id}"></td>
+					<td th:text="${compra.entrada.lugar}"></td>
+					<td th:text="${compra.dni}"></td>
+					<td th:text="${compra.cantidad}"></td>
+					<td th:text=" '$'+${compra.total}"></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>	
+</body>
+</html>
